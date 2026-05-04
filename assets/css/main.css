@@ -1,0 +1,1705 @@
+:root { --wrap: 1100px; --gap: 16px; --muted:#6b7280; --gold:#c2a35e; }
+* { box-sizing: border-box; }
+body { margin:0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#1a1a1a; background:#fff;}
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 16px; }
+.site-header { border-bottom:1px solid #eee; }
+.site-header .wrap { display:flex; align-items:center; gap:16px; padding:12px 16px; }
+.logo { font-weight:700; text-decoration:none; color:#1a1a1a; }
+.primary-nav ul { display:flex; gap:12px; list-style:none; margin:0; padding:0; }
+.site-search input { padding:8px 10px; border:1px solid #ddd; border-radius:6px; }
+.grid { display:grid; grid-template-columns: 1fr 320px; gap:24px; }
+.cards { display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap:20px; }
+.card { display:flex; gap:12px; border:1px solid #eee; border-radius:12px; overflow:hidden; background:#fff; }
+.card__media img { display:block; width:100%; height:auto; }
+.card__body { padding:12px; }
+.card__title { font-weight:700; color:#1a1a1a; text-decoration:none; display:block; }
+.card__meta { color: var(--muted); font-size:14px; }
+.muted { color: var(--muted); }
+.btn, .btn-outline { display:inline-block; padding:8px 12px; border-radius:8px; text-decoration:none; }
+.btn { background:#1a1a1a; color:#fff; }
+.btn-outline { border:1px solid #1a1a1a; color:#1a1a1a; }
+.stars .star { font-size:14px; color:#f5b50a; }
+.stars .star.empty { color:#ddd; }
+.pagination { margin:24px 0; display:flex; gap:8px; justify-content:center; }
+.site-footer { margin-top:40px; border-top:1px solid #eee; }
+.site-footer .wrap { padding:20px 16px; display:flex; justify-content:space-between; }
+@media (max-width: 980px) { .grid { grid-template-columns: 1fr; } }
+
+.header-wrap {
+	width: min(1200px, 92%);
+	margin-inline: auto;
+}
+
+/* =========================================
+   MOBILE SIDEBAR
+========================================= */
+
+.ci-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+  z-index: 9998;
+}
+
+.ci-mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  max-width: 85%;
+  height: 100%;
+  background: #fff;
+  padding: 30px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(.77,0,.18,1);
+  z-index: 9999;
+  box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+}
+
+/* Active State */
+.ci-mobile-menu.active {
+  transform: translateX(0);
+}
+
+.ci-mobile-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Close Button */
+.ci-mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 26px;
+  height: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.ci-mobile-close span {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #111;
+  top: 50%;
+  left: 0;
+  transition: 0.3s ease;
+}
+
+.ci-mobile-close span:first-child {
+  transform: rotate(45deg);
+}
+
+.ci-mobile-close span:last-child {
+  transform: rotate(-45deg);
+}
+
+/* Logo */
+.ci-mobile-top img {
+  height: 50px;
+  margin-bottom: 40px;
+}
+
+/* Menu */
+.ci-mobile-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ci-mobile-menu-list li {
+  margin-bottom: 18px;
+}
+
+.ci-mobile-menu-list a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+  transition: 0.2s ease;
+}
+
+.ci-mobile-menu-list a:hover {
+  color: #c2a35e;
+}
+
+/* Bottom */
+.ci-mobile-bottom {
+  margin-top: 40px;
+}
+
+.ci-mobile-bottom p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.ci-mobile-social {
+  display: flex;
+  gap: 15px;
+}
+
+.ci-mobile-social a {
+  font-size: 18px;
+  color: #111;
+  transition: 0.2s ease;
+}
+
+.ci-mobile-social a:hover {
+  color: #c2a35e;
+}
+
+/* Hide desktop nav on mobile */
+@media (max-width: 1024px) {
+  .ci-nav {
+    display: none;
+  }
+}
+
+/* =============================
+   GENERIC PAGE STYLING
+============================= */
+
+.ci-page-wrap {
+  padding: 60px 20px;
+}
+
+.ci-page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+}
+
+.ci-page-header {
+  margin-bottom: 30px;
+}
+
+.ci-page-title {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.ci-page-date {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.ci-page-content {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.ci-page-content p {
+  margin-bottom: 22px;
+}
+
+.ci-page-content h2 {
+  margin-top: 50px;
+  font-size: 26px;
+}
+
+.ci-page-content h3 {
+  margin-top: 35px;
+  font-size: 20px;
+}
+
+.ci-page-content ul,
+.ci-page-content ol {
+  margin: 20px 0 20px 20px;
+}
+
+.ci-page-content a {
+  color: #c2a35e;
+  text-decoration: none;
+}
+
+.ci-page-content a:hover {
+  text-decoration: underline;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .ci-page-container {
+    padding: 30px 25px;
+  }
+
+  .ci-page-title {
+    font-size: 26px;
+  }
+
+}
+
+/* =====================================
+   HOMEPAGE SEO SECTION
+===================================== */
+
+.ci-home-about {
+  padding: 80px 0;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
+.ci-home-about .wrap {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ci-home-about h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.ci-home-about h3 {
+  font-size: 20px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.ci-home-about p {
+  color: #555;
+  line-height: 1.8;
+}
+
+/* Hero grid */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  margin: 16px 0 8px;
+}
+.hero-grid .card--hero { grid-column: 1 / 2; }
+.hero-grid .card--tile { grid-column: 2 / 3; }
+@media (max-width: 980px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-grid .card--hero, .hero-grid .card--tile { grid-column: auto; }
+}
+
+/* Chip + widgets */
+.chip { display:inline-block; padding:4px 8px; border-radius:999px; background:#f1f3f5; font-weight:600; font-size:.75rem; margin-bottom:6px; }
+.widget { background:#fff; border:1px solid #eee; border-radius:12px; padding:16px; margin-bottom:16px; }
+.mini-list { list-style:none; margin:0; padding:0; }
+.mini-list li { padding:10px 0; border-bottom:1px solid #f3f4f6; }
+.mini-list li:last-child { border-bottom:none; }
+
+/* Ad placeholders */
+.ci-ad { display:flex; align-items:center; justify-content:center; min-height:90px; border:1px dashed #e5e7eb; border-radius:12px; background:#fafafa; margin:16px 0; }
+.ci-ad--leaderboard { min-height:120px; }
+
+/* Containers */
+.wrap { width: min(1200px, 92%); margin-inline: auto; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 1024px){ .grid{ grid-template-columns: 2fr 1fr; } }
+
+.muted { color: #4b5563; }
+
+/* HERO GRID */
+.hero { padding: 28px 0 8px; }
+.hero-grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 960px){
+  .hero-grid{ grid-template-columns: 2fr 1fr 1fr; grid-auto-rows: 1fr; }
+  .card--hero{ grid-column: 1 / span 1; grid-row: 1 / span 2; }
+}
+
+/* Cards */
+.cards { display: grid; gap: 18px; }
+.card{ background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,.06); }
+.card__media img{ width:100%; height:100%; object-fit:cover; display:block; }
+.card--hero .card__media{ aspect-ratio: 16/9; position:relative; }
+.card--tile .card__media{ aspect-ratio: 16/9; }
+.card__body{ padding:14px 16px; }
+.card__title{ font-size:1.05rem; line-height:1.3; margin:0; }
+.card__excerpt{ margin:.4rem 0 0; color:#444; }
+.badge{
+  position:absolute; left:12px; bottom:12px; background:#f5c14b; color:#111;
+  font-weight:700; padding:4px 8px; border-radius:999px; font-size:.78rem;
+}
+
+/* Content area + sidebar */
+.content h2{ margin: 24px 0 8px; font-size:1.6rem; }
+.sidebar .widget{ background:#fff; border-radius:14px; padding:16px; margin-bottom:16px; }
+
+/* Pagination */
+.pagination{ display:flex; gap:8px; align-items:center; justify-content:center; padding:20px 0; }
+.pagination a, .pagination span{
+  display:inline-block; padding:6px 10px; border-radius:8px; background:#f1f3f5;
+}
+.pagination .current{ background:#1a222e; color:#fff; }
+
+
+
+/* ===============================
+   HEADER BASE
+================================ */
+
+.ci-header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.ci-header-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 50px;
+  padding: 18px 0 14px;
+  align-items: center;
+}
+
+/* Branding */
+.ci-branding {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ci-logo img {
+  height: 52px;
+}
+
+.ci-tagline {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+}
+
+.ci-tagline strong {
+  font-weight: 600;
+}
+
+/* RIGHT SIDE */
+.ci-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+/* ACTIONS ROW */
+.ci-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ACCOUNT */
+.ci-account {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  color: #111;
+}
+
+/* SEARCH */
+.ci-search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 40px;
+  background: #fafafa;
+}
+
+.ci-search input {
+  border: none;
+  padding: 0 14px;
+  outline: none;
+  width: 200px;
+  background: transparent;
+  font-size: 14px;
+}
+
+.ci-search button {
+  border: none;
+  background: transparent;
+  padding: 0 14px;
+  cursor: pointer;
+  color: #888;
+}
+
+.ci-search:hover {
+  border-color: #c2a35e;
+}
+
+/* ACCOUNT */
+.ci-account {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  color: #111;
+}
+
+.ci-account:hover {
+  color: #c2a35e;
+}
+
+.account-admin-cta {
+  margin-top: 25px;
+}
+
+.account-admin-btn {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: #111;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.account-admin-btn:hover {
+  background: #c2a35e;
+  color: #111;
+}
+
+/* ===============================
+   NAVIGATION
+================================ */
+
+.ci-nav {
+  margin-top: 14px;
+  position: relative;
+}
+
+.ci-menu {
+  display: flex;
+  justify-content: flex-end;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ci-menu li {
+  position: relative;
+}
+
+/* Top links */
+.ci-menu > li > a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  color: #111;
+  padding: 6px 0;
+  position: relative;
+}
+
+/* Modern underline hover */
+.ci-menu > li > a::before {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #c2a35e;
+  transition: width 0.25s ease;
+}
+
+.ci-menu > li:hover > a::before {
+  width: 100%;
+}
+
+/* Dropdown Arrow */
+.ci-menu li.menu-item-has-children > a::after {
+  content: "\f078";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 13px;
+  margin-left: 6px;
+  transition: transform 0.2s ease;
+}
+
+.ci-menu li.menu-item-has-children:hover > a::after {
+  transform: rotate(180deg);
+}
+
+/* Properly Hidden Dropdown */
+.ci-menu .sub-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  min-width: 200px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 0;
+  list-style: none;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.2s ease;
+  z-index: 999;
+}
+
+.ci-menu li:hover > .sub-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.ci-menu .sub-menu li a {
+  display: block;
+  padding: 8px 16px;
+  font-size: 13px;
+  text-decoration: none;
+  color: #111;
+}
+
+.ci-menu .sub-menu li a:hover {
+  background: #f5f5f5;
+}
+
+/* =========================================
+   HAMBURGER
+========================================= */
+.ci-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.ci-toggle span {
+  width: 22px;
+  height: 2px;
+  background: #111;
+  display: block;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+@media (max-width: 1024px) {
+
+  .ci-header-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ci-right {
+    align-items: stretch;
+  }
+
+  .ci-menu {
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 14px;
+  }
+
+  .ci-toggle {
+    display: flex;
+  }
+
+  .ci-actions {
+    justify-content: space-between;
+  }
+
+  .ci-search input {
+    width: 120px;
+  }
+
+  .ci-header-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .ci-branding {
+    align-items: center;
+    text-align: center;
+  }
+
+  .ci-logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .ci-tagline {
+    text-align: center;
+  }
+
+}
+
+/* =========================================
+   BLACK FEATURE BAR
+========================================= */
+
+.ci-feature-bar {
+  background: #0f0f10;
+  color: #fff;
+  padding: 14px 0;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #111;
+}
+
+.ci-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  align-items: center;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.feature-item i {
+  font-size: 16px;
+  color: #c2a35e;
+}
+
+.feature-item:hover {
+  opacity: 1;
+}
+
+/* Hide Black Feature Bar on Mobile */
+@media (max-width: 768px) {
+  .ci-feature-bar {
+    display: none;
+  }
+}
+
+
+
+
+/* =========================================
+   FOOTER BASE
+========================================= */
+
+.ci-footer {
+  background: linear-gradient(to bottom, #141414, #0d0d0f);
+  color: #ccc;
+  padding: 60px 0 30px;
+  font-size: 14px;
+}
+
+.ci-footer a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ci-footer a:hover {
+  color: #fff;
+}
+
+/* =========================================
+   TOP ROW
+========================================= */
+
+.ci-footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.ci-footer-logo img {
+  height: 40px;
+  opacity: 0.8;
+}
+
+/* SOCIAL */
+.ci-footer-social {
+  display: flex;
+  gap: 18px;
+  font-size: 18px;
+}
+
+.ci-footer-social a {
+  opacity: 0.7;
+}
+
+.ci-footer-social a:hover {
+  opacity: 1;
+}
+
+/* NEWSLETTER BUTTON */
+.ci-newsletter-btn {
+  background: #1f1f22;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ci-newsletter-btn:hover {
+  background: #2a2a2e;
+}
+
+/* DIVIDER */
+.ci-footer-divider {
+  border: none;
+  border-top: 1px solid #222;
+  margin: 30px 0 40px;
+}
+
+/* =========================================
+   GRID
+========================================= */
+
+.ci-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.ci-footer-col h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+  color: #fff;
+}
+
+.ci-footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ci-footer-col li {
+  margin-bottom: 8px;
+}
+
+/* =========================================
+   BOTTOM
+========================================= */
+
+.ci-footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1024px) {
+  .ci-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ci-footer-top {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ci-footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ======================================
+   ACCOUNT PAGE – CIGAR INSPECTOR STYLE
+====================================== */
+
+.account-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 100px 20px;
+  background: #f5f5f5;
+}
+
+.account-card {
+  width: 100%;
+  max-width: 720px;
+  background: #ffffff;
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.08);
+}
+
+/* =============================
+   TABS
+============================= */
+
+.account-tabs {
+  display: flex;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #eee;
+}
+
+.account-tab {
+  flex: 1;
+  padding: 14px 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #999;
+  border-bottom: 2px solid transparent;
+  transition: .2s ease;
+}
+
+.account-tab.active {
+  color: #111;
+  border-bottom: 2px solid #c2a35e;
+}
+
+/* =============================
+   FORM
+============================= */
+
+.account-form {
+  display: none;
+}
+
+.account-form.active {
+  display: block;
+}
+
+.account-form h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.account-form p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Inputs */
+
+.account-form input[type="text"],
+.account-form input[type="email"],
+.account-form input[type="password"] {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: 1px solid #e3e3e3;
+  font-size: 14px;
+  background: #fafafa;
+  transition: .2s ease;
+}
+
+.account-form input:focus {
+  outline: none;
+  border-color: #c2a35e;
+  background: #fff;
+}
+
+/* Forgot password link */
+
+.account-extra-links {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.account-extra-links a {
+  font-size: 13px;
+  color: #999;
+  text-decoration: none;
+  transition: .2s ease;
+}
+
+.account-extra-links a:hover {
+  color: #c2a35e;
+}
+
+/* =============================
+   REMEMBER ME FIX
+============================= */
+
+.login-remember {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 25px;
+}
+
+.login-remember input {
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+}
+
+.login-remember label {
+  margin: 0 !important;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+}
+
+/* =============================
+   BUTTONS
+============================= */
+
+.account-form button,
+.account-form input[type="submit"] {
+  width: 100%;
+  padding: 16px;
+  border-radius: 40px;
+  border: none;
+  background: #111;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .05em;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.account-form button:hover,
+.account-form input[type="submit"]:hover {
+  background: #c2a35e;
+  color: #111;
+}
+
+/* =============================
+   LINKS
+============================= */
+
+.account-form a {
+  color: #c2a35e;
+  text-decoration: none;
+}
+
+.account-form a:hover {
+  text-decoration: underline;
+}
+
+/* =============================
+   MESSAGES
+============================= */
+
+.success {
+  color: #2e7d32;
+  margin-top: 15px;
+}
+
+.error {
+  color: #c62828;
+  margin-top: 15px;
+}
+
+/* =============================
+   MOBILE
+============================= */
+
+@media (max-width: 768px) {
+
+  .account-tabs {
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: none;
+  }
+
+  .account-tab {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 12px;
+  }
+
+  .account-tab.active {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+  }
+	
+  .account-wrapper {
+    padding: 60px 15px;
+  }
+
+  .account-card {
+    padding: 35px 25px;
+  }
+
+  .account-form h2 {
+    font-size: 22px;
+  }
+
+}
+
+.account-dashboard .account-tabs {
+  margin-bottom: 35px;
+}
+
+.account-dashboard .account-tab {
+  flex: 1;
+}
+
+.account-dashboard .logout-tab {
+  text-align: center;
+  background: #f3f3f3;
+  border-radius: 8px;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.account-dashboard .logout-tab:hover {
+  background: #111;
+  color: #fff;
+}
+
+
+/* =============================
+   ARCHIVE WRAP
+============================= */
+
+.ci-archive-wrap {
+  padding: 60px 0;
+}
+
+.wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Card link reset */
+.ci-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Title styling */
+.ci-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #111;
+}
+
+.ci-card:hover h3 {
+  color: #c2a35e;
+}
+
+.ci-range {
+  display: flex;
+  gap: 10px;
+}
+
+.ci-range input {
+  flex: 1;
+}
+
+/* =============================
+   CIGAR ARCHIVE
+============================= */
+
+.ci-archive-wrap {
+  padding: 60px 0;
+}
+
+.ci-archive-header {
+  margin-bottom: 50px;
+}
+
+.ci-archive-header h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.ci-archive-sub {
+  color: #777;
+}
+
+/* Layout */
+.ci-archive-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 60px;
+}
+
+/* Sidebar */
+.ci-filter-card {
+  background: #fff;
+  padding: 28px;
+  border-radius: 18px;
+  border: 1px solid #eee;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+}
+
+.ci-filter-group {
+  margin-bottom: 20px;
+}
+
+.ci-filter-group label {
+  font-size: 13px;
+  display: block;
+  margin-bottom: 6px;
+  color: #666;
+}
+
+.ci-filter-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.ci-btn-primary {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ci-reset {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #777;
+}
+
+/* Grid */
+.ci-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+/* Cards */
+.ci-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.ci-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.1);
+}
+
+.ci-card-media img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.ci-card-content {
+  padding: 18px;
+}
+
+.ci-card-content h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.ci-card-region {
+  font-size: 13px;
+  color: #888;
+}
+
+/* Pagination */
+.ci-pagination {
+  margin-top: 60px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .ci-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .ci-archive-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ci-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================
+   HEADER
+============================= */
+
+.ci-archive-header {
+  margin-bottom: 50px;
+}
+
+.ci-archive-header h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.ci-archive-sub {
+  color: #777;
+}
+
+/* =============================
+   LAYOUT
+============================= */
+
+.ci-archive-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 60px;
+  margin-top: 50px;
+}
+
+/* =============================
+   FILTER CARD
+============================= */
+
+.ci-filter-card {
+  background: #fff;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+}
+
+.ci-filter-card h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.ci-filter-group {
+  margin-bottom: 20px;
+}
+
+.ci-filter-group label {
+  font-size: 13px;
+  display: block;
+  margin-bottom: 6px;
+  color: #666;
+}
+
+.ci-filter-group input,
+.ci-filter-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.ci-radio-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* LEFT ALIGN */
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.ci-radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #444;
+}
+
+.ci-radio-group input[type="radio"] {
+  margin: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.ci-btn-primary {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ci-reset {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #777;
+}
+
+/* =============================
+   GRID
+============================= */
+
+
+.ci-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .ci-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .ci-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Slightly wider cards */
+.card--listing {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+}
+
+.card__media img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.card__body {
+  padding: 18px;
+}
+
+.card__title {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.card__rating {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.card__meta {
+  font-size: 13px;
+  color: #999;
+}
+
+/* =============================
+   PAGINATION
+============================= */
+
+.ci-pagination {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.ci-pagination .page-numbers {
+  display: inline-block;
+  padding: 8px 14px;
+  margin: 0 4px;
+  border-radius: 10px;
+  background: #f2f2f2;
+  text-decoration: none;
+  color: #333;
+}
+
+.ci-pagination .current {
+  background: #111;
+  color: #fff;
+}
+
+/* =============================
+   RESPONSIVE
+============================= */
+
+@media (max-width: 1100px) {
+  .ci-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .ci-archive-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ci-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ci-filter-card {
+    margin-bottom: 40px;
+  }
+}
+
+
+/* ======================================
+   BUSINESS LISTING CARDS
+====================================== */
+
+.ci-business-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.05);
+  transition: all 0.25s ease;
+}
+
+.ci-business-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.ci-business-card-link {
+  display: flex;
+  align-items: stretch;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Image */
+.ci-business-card-thumb {
+  width: 180px;
+  flex-shrink: 0;
+}
+
+.ci-business-card-thumb img {
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Content */
+.ci-business-card-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ci-business-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 6px;
+}
+
+.ci-business-card-rating {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.ci-business-card-location {
+  font-size: 13px;
+  color: #777;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .ci-business-card-link {
+    flex-direction: column;
+  }
+
+  .ci-business-card-thumb {
+    width: 100%;
+  }
+
+  .ci-business-card-thumb img {
+    height: 200px;
+  }
+}
+
+/* Business Listing Card */
+.card--listing {
+  display: flex;
+  align-items: stretch;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card--listing:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Image */
+.card--listing .card__media {
+  flex: 0 0 45%;
+  max-width: 45%;
+  display: block;
+}
+
+.card--listing .card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder */
+.card__placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+}
+
+/* Content */
+.card--listing .card__body {
+  flex: 1;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+  text-decoration: none;
+}
+
+.card__title:hover {
+  color: #c2a35e;
+}
+
+.card__rating {
+  font-size: 14px;
+  color: #777;
+  margin: 6px 0;
+}
+
+.card__meta {
+  font-size: 14px;
+  color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card--listing {
+    flex-direction: column;
+  }
+
+  .card--listing .card__media {
+    max-width: 100%;
+  }
+
+  .card__placeholder {
+    min-height: 200px;
+  }
+}
+
+/* =============================
+   PROFILE FORM CLEANUP
+============================= */
+
+.account-form input,
+.account-form textarea {
+  width: 100%;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid #e5e5e5;
+  background: #fafafa;
+  font-size: 14px;
+  margin-bottom: 18px;
+  transition: 0.2s ease;
+}
+
+.account-form input:focus,
+.account-form textarea:focus {
+  outline: none;
+  border-color: #c2a35e;
+  background: #fff;
+}
+
+/* Avatar Section */
+.account-avatar-section {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.account-avatar-preview img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Hide ugly native file input */
+.avatar-upload input {
+  display: none;
+}
+
+/* Custom upload button */
+.avatar-upload span {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 30px;
+  background: #f3f3f3;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.avatar-upload span:hover {
+  background: #111;
+  color: #fff;
+}
+
+/* Textarea */
+.account-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Improve spacing */
+.account-form h2 {
+  margin-bottom: 30px;
+}

@@ -1,0 +1,205 @@
+/* =====================================================
+   CIGAR LIBRARY TAXONOMY (BUYING GUIDE ETC)
+   Scope: .tax-library_category ONLY
+===================================================== */
+
+.tax-library_category .library-archive {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+/* HEADER */
+
+.tax-library_category .library-header {
+  margin-bottom: 40px;
+}
+
+.tax-library_category .library-header h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.tax-library_category .library-header p {
+  color: #666;
+  font-size: 16px;
+}
+
+/* FILTERS */
+
+.tax-library_category .library-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0 40px;
+  gap: 20px;
+}
+
+.tax-library_category .library-primary-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tax-library_category .library-primary-cats a {
+  padding: 8px 16px;
+  border-radius: 30px;
+  background: #f4f4f4;
+  font-size: 13px;
+  text-decoration: none;
+  color: #333;
+  transition: .2s ease;
+}
+
+.tax-library_category .library-primary-cats a:hover {
+  background: #c2a35e;
+  color: #fff;
+}
+
+.tax-library_category .library-primary-cats a.active {
+  background: #111;
+  color: #fff;
+}
+
+.tax-library_category .library-more-cats select {
+  appearance: none;
+  padding: 8px 18px;
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* FEATURED */
+
+.tax-library_category .library-featured {
+  position: relative;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+
+.tax-library_category .library-featured img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+}
+
+.tax-library_category .featured-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,0.2), transparent);
+  display: flex;
+  align-items: flex-end;
+  padding: 40px;
+}
+
+.tax-library_category .featured-overlay h2 {
+  color: #fff;
+  font-size: 34px;
+  margin: 0;
+}
+
+.tax-library_category .featured-overlay a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* GRID */
+
+.tax-library_category .library-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* CARD */
+
+.tax-library_category .library-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 22px rgba(0,0,0,.06);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.tax-library_category .library-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+}
+
+.tax-library_category .library-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.tax-library_category .library-content {
+  padding: 20px;
+}
+
+.tax-library_category .library-content h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.tax-library_category .library-content h3 a {
+  text-decoration: none;
+  color: #111;
+}
+
+.tax-library_category .library-content h3 a:hover {
+  color: #c2a35e;
+}
+
+.tax-library_category .library-content p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.tax-library_category .library-date {
+  font-size: 12px;
+  color: #999;
+}
+
+/* PAGINATION */
+
+.tax-library_category .pagination {
+  margin-top: 50px;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .tax-library_category .library-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .tax-library_category .library-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tax-library_category .library-featured img {
+    height: 300px;
+  }
+
+  .tax-library_category .library-card img {
+    height: 200px;
+  }
+
+  .tax-library_category .library-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tax-library_category .library-primary-cats {
+    overflow-x: auto;
+    flex-wrap: wrap;
+  }
+
+}

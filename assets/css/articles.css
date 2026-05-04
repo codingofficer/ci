@@ -1,0 +1,139 @@
+/* ===============================
+   ARTICLES PAGE
+================================= */
+
+.articles-page {
+  padding: 40px 0 60px;
+}
+
+.articles-container {
+  width: 1200px;
+  max-width: 92%;
+  margin: 0 auto;
+}
+
+/* Title */
+.articles-title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+/* Card */
+.article-card {
+  background: #fff;
+  border-radius: 14px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  transition: all 0.25s ease;
+}
+
+.article-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+
+/* Link wrapper */
+.article-link {
+  display: flex;
+  gap: 24px;
+  padding: 18px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Image */
+.article-image img {
+  width: 260px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+/* Content */
+.article-content {
+  flex: 1;
+}
+
+.article-category {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #c59d5f;
+  font-weight: 600;
+}
+
+.article-title {
+  font-size: 22px;
+  margin: 8px 0 10px;
+  line-height: 1.4;
+  color: #111;
+}
+
+.article-title:hover {
+  color: #c59d5f;
+}
+
+.article-excerpt {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.article-date {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ===============================
+   PAGINATION
+================================= */
+
+.articles-pagination {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.articles-pagination a,
+.articles-pagination span {
+  display: inline-block;
+  padding: 10px 16px;
+  margin: 0 4px;
+  background: #eee;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #333;
+}
+
+.articles-pagination .current {
+  background: #000;
+  color: #fff;
+}
+
+.articles-pagination a:hover {
+  background: #ddd;
+}
+
+/* ===============================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 768px) {
+
+  .article-link {
+    flex-direction: column;
+  }
+
+  .article-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .articles-title {
+    font-size: 26px;
+  }
+
+}

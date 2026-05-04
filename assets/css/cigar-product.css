@@ -1,0 +1,93 @@
+/* ================================
+   CIGAR PRODUCT PAGE
+================================ */
+
+.ci-product-wrap {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.ci-product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.ci-product-image img {
+  width: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.ci-product-title {
+  font-size: 38px;
+  margin: -20px 0 30px 0;
+}
+
+.ci-specs {
+  display: grid;
+  gap: 14px;
+  background: #fafafa;
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid #eee;
+}
+
+.ci-specs div {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.ci-specs div:last-child {
+  border-bottom: none;
+}
+
+.ci-specs span {
+  color: #777;
+  font-size: 14px;
+}
+
+.ci-specs strong {
+  font-weight: 600;
+}
+
+.ci-product-content {
+  max-width: 900px;
+  margin: 80px auto 0;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.ci-product-content h2 {
+  margin-top: 60px;
+  font-size: 28px;
+}
+
+.ci-product-content img {
+  width: 100%;
+  border-radius: 14px;
+  margin: 40px 0;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .ci-product-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .ci-product-title {
+    font-size: 28px;
+  }
+
+  .ci-product-content {
+    font-size: 16px;
+  }
+}

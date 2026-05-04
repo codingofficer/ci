@@ -1,0 +1,518 @@
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.ci-listing {
+  padding-bottom: 40px;
+}
+
+.ci-layout {
+  display: grid;
+  grid-template-columns: 1.75fr 1fr;
+  gap: 56px;
+  padding: 56px 0 60px;
+  align-items: start;
+}
+
+.ci-left,
+.ci-right {
+  min-width: 0;
+}
+
+/* Right column stays same width as gallery; children fill it */
+.ci-right {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+  width: 100%;
+}
+
+.ci-hero-left {
+  margin-bottom: 18px;
+}
+
+.ci-title {
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.1;
+  margin: 0 0 10px;
+}
+
+.ci-rating-summary {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 8px 0 10px;
+}
+
+.ci-rating-value {
+  font-weight: 600;
+}
+
+.ci-muted {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.ci-stars {
+  color: #f5b301;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.ci-address {
+  color: #4b5563;
+  margin: 0 0 14px;
+}
+
+.ci-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.ci-btn,
+.ci-btn-outline {
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.08s ease, opacity 0.08s ease;
+  cursor: pointer;
+}
+
+.ci-btn:hover,
+.ci-btn-outline:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.ci-btn {
+  background: #111;
+  color: #fff;
+  border: 1px solid #111;
+}
+
+.ci-btn-outline {
+  border: 1px solid #111;
+  color: #111;
+  background: transparent;
+}
+
+.ci-main {
+  display: grid;
+  gap: 26px;
+}
+
+.ci-content {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+  padding: 22px;
+}
+
+/* ---- Gallery ---- */
+.ci-gallery {
+  width: 100%;
+}
+
+.ci-gallery-main img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+.ci-gallery-thumbs {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.ci-thumb-btn {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+
+.ci-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* ---- Sidebar cards: FORCE SAME WIDTH AS GALLERY ---- */
+.ci-card {
+  width: 100%;
+  box-sizing: border-box;
+  background: #fafafa;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 22px;
+  border-radius: 16px;
+  margin-top: 18px;
+}
+
+.ci-card:first-child {
+  margin-top: 18px; /* keeps consistent spacing under gallery */
+}
+
+/* ---- Opening hours ---- */
+.ci-hours {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  width: 100%;
+}
+
+.ci-hours li {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.ci-hours li:last-child {
+  border-bottom: 0;
+}
+
+.ci-hours-day {
+  font-weight: 700;
+  color: #111;
+}
+
+.ci-hours-time {
+  text-align: right;
+  color: #374151;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Reviews ---- */
+.ci-reviews {
+  margin-top: 8px;
+}
+
+.ci-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.ci-section-head h2 {
+  margin: 0;
+}
+
+.ci-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(245, 179, 1, 0.12);
+  border: 1px solid rgba(245, 179, 1, 0.25);
+  font-weight: 700;
+  color: #7a5b00;
+  white-space: nowrap;
+}
+
+.ci-rating-breakdown {
+  margin: 16px 0 18px;
+  padding: 14px 14px 6px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 16px;
+}
+
+.ci-bar-row {
+  display: grid;
+  grid-template-columns: 44px 1fr 28px;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ci-bar {
+  height: 10px;
+  background: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.ci-bar div {
+  height: 100%;
+  background: #f5b301;
+}
+
+.ci-review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 16px;
+}
+
+.ci-review-card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+
+.ci-review-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ci-review-title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.ci-review-content {
+  color: #374151;
+  line-height: 1.55;
+}
+
+.ci-review-meta {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.ci-loadmore-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.ci-loadmore[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ci-loadmore-status {
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .ci-layout {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 40px 0 50px;
+  }
+
+  .ci-right {
+    position: static;
+  }
+
+  .ci-gallery-main img {
+    height: 320px;
+  }
+
+  .ci-gallery-thumbs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .ci-gallery-thumbs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- Claim form: modern, full-width, clean --- */
+#claim .ci-card {
+  padding: 24px;
+}
+
+#claim .ci-card h3 {
+  margin: 0 0 14px;
+}
+
+/* Make whatever the shortcode outputs fill the card */
+#claim form,
+#claim .wpcf7,
+#claim .gform_wrapper,
+#claim .wpforms-container,
+#claim .nf-form-cont,
+#claim .forminator-ui,
+#claim .fluentform,
+#claim .elementor-form {
+  width: 100%;
+}
+
+/* Field wrapper spacing */
+#claim form p,
+#claim form .field,
+#claim form .form-row,
+#claim form .form-group,
+#claim form .gfield,
+#claim form .wpforms-field,
+#claim form .nf-field-container,
+#claim form .forminator-row,
+#claim form .ff-el-group {
+  margin: 0 0 14px;
+}
+
+/* Labels */
+#claim label {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  margin: 0 0 6px;
+  color: #111;
+}
+
+/* Inputs */
+#claim input[type="text"],
+#claim input[type="email"],
+#claim input[type="tel"],
+#claim input[type="url"],
+#claim input[type="password"],
+#claim input[type="search"],
+#claim textarea,
+#claim select {
+  width: 100% !important;
+  box-sizing: border-box;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 12px;
+  padding: 12px 12px;
+  font-size: 14px;
+  line-height: 1.35;
+  background: #fff;
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+/* Textarea sizing */
+#claim textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Focus state */
+#claim input:focus,
+#claim textarea:focus,
+#claim select:focus {
+  border-color: rgba(17,17,17,0.45);
+  box-shadow: 0 0 0 4px rgba(245, 179, 1, 0.18);
+}
+
+/* Placeholder */
+#claim ::placeholder {
+  color: rgba(17,17,17,0.45);
+}
+
+/* Button - modern */
+#claim button,
+#claim input[type="submit"],
+#claim .button,
+#claim .btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.08s ease, opacity 0.08s ease, box-shadow 0.12s ease;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+#claim button:hover,
+#claim input[type="submit"]:hover,
+#claim .button:hover,
+#claim .btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.96;
+}
+
+/* Help/error text */
+#claim .ci-muted,
+#claim .description,
+#claim .help,
+#claim .wpcf7-not-valid-tip,
+#claim .gfield_description,
+#claim .wpforms-error,
+#claim .nf-error-msg,
+#claim .forminator-error-message,
+#claim .ff-el-help-message {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* If your shortcode has an outer wrapper that was narrowing inputs */
+#claim * {
+  max-width: 100%;
+}
+
+/* --- Claim form hard override (fixes the "Name" field mismatch) --- */
+#claim form input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]),
+#claim form textarea,
+#claim form select,
+#claim .ci-card input:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]),
+#claim .ci-card textarea,
+#claim .ci-card select {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  height: auto !important;
+  min-height: 44px;
+  padding: 12px 12px !important;
+  border: 1px solid rgba(0,0,0,0.12) !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+  outline: none !important;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Focus matches your new style */
+#claim form input:not([type="submit"]):focus,
+#claim form textarea:focus,
+#claim form select:focus,
+#claim .ci-card input:not([type="submit"]):focus,
+#claim .ci-card textarea:focus,
+#claim .ci-card select:focus {
+  border-color: rgba(17,17,17,0.45) !important;
+  box-shadow: 0 0 0 4px rgba(245, 179, 1, 0.18) !important;
+}
+
+/* Some plugins wrap inputs in spans/divs that can constrain width */
+#claim form span,
+#claim form p,
+#claim form div,
+#claim .ci-card span,
+#claim .ci-card p,
+#claim .ci-card div {
+  max-width: 100%;
+}
