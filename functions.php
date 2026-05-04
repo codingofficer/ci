@@ -7,6 +7,7 @@ require_once __DIR__ . '/inc/assets.php';
 require_once __DIR__ . '/inc/queries.php';
 require_once __DIR__ . '/inc/schema.php';
 require_once __DIR__ . '/inc/helpers.php';
+require_once __DIR__ . '/inc/article-blocks.php';
 
 add_filter('acf/settings/save_json', function ($path) {
   return get_stylesheet_directory() . '/acf-json';

@@ -3,7 +3,7 @@ get_header();
 
 while (have_posts()) : the_post();
 
-$reading_time = ceil(str_word_count(strip_tags(get_the_content())) / 200);
+$reading_time = max(1, ceil(ci_article_word_count(get_the_ID()) / 200));
 ?>
 
 <article class="library-article">
@@ -87,7 +87,11 @@ $reading_time = ceil(str_word_count(strip_tags(get_the_content())) / 200);
 	</aside>
 
     <div class="library-content">
-      <?php the_content(); ?>
+      <?php
+      if (!ci_render_article_blocks()) {
+        the_content();
+      }
+      ?>
     </div>
 
   </div>
